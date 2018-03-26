@@ -13,14 +13,23 @@ class AppComponent extends Component {
   // in latest versio of react app
   // state can be defined without constructor function
   state = {
-    fruitEmojis: ['�', '🍑', '🍇', '🥝']
+    greetEmojis: [],
+    fruitEmojis: ['🍅', '🍑', '🍇', '🥝']
   };
+
+  // using lifecycle method
+  componentDidMount() {
+    // modify state
+    this.setState({
+      greetEmojis: '⚛️ + 📱'
+    });
+  }
 
   render() {
     return (
       <View>
-        <Hello name="🙏" />
-        <Hello name="⚛️ + 📱" />
+        {/* access state in render */}
+        <Hello name={this.state.greetEmojis} />
       </View>
     );
   }
