@@ -14,7 +14,8 @@ class AppComponent extends Component {
   // state can be defined without constructor function
   state = {
     greetEmojis: ['⚛️ + 📱'],
-    fruitEmojis: ['🍅', '🍑', '🍇', '🥝']
+    // fruitEmojis: ['🍅', '🍑', '🍇', '🥝']
+    fruitEmojis: []
   };
 
   // using lifecycle method
@@ -31,9 +32,13 @@ class AppComponent extends Component {
         {/* access state in render */}
         <Hello name={this.state.greetEmojis} />
         <Text style={{ paddingTop: 50 }}>Fruits Array:</Text>
-        {this.state.fruitEmojis.map(fruit => {
-          return <Text key={fruit}>{fruit}</Text>;
-        })}
+        {this.state.fruitEmojis.length < 0 ? (
+          this.state.fruitEmojis.map(fruit => {
+            return <Text key={fruit}>{fruit}</Text>;
+          })
+        ) : (
+          <Text>There are no fruits in your array</Text>
+        )}
       </View>
     );
   }
