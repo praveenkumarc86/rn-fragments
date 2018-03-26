@@ -27,9 +27,13 @@ class AppComponent extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ alignItems: 'center' }}>
         {/* access state in render */}
         <Hello name={this.state.greetEmojis} />
+        <Text style={{ paddingTop: 50 }}>Fruits Array:</Text>
+        {this.state.fruitEmojis.map(fruit => {
+          return <Text key={fruit}>{fruit}</Text>;
+        })}
       </View>
     );
   }
