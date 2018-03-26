@@ -1,10 +1,20 @@
 // import dependencies
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 
-// functional component
-const Hello = () => (
-  <Text style={{ paddingTop: 50 }}>Hello React Native World!</Text>
+// functional child component
+const Hello = props => (
+  <Text style={{ paddingTop: 50 }}>Hello, {props.name}</Text>
 );
 
-export default Hello;
+// functional parent component
+const AppComponent = () => {
+  return (
+    <View>
+      <Hello name="React Native" />
+      <Hello name="World" />
+    </View>
+  );
+};
+
+export default AppComponent;
