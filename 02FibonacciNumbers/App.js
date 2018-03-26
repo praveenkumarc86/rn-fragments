@@ -19,8 +19,8 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text style={styles.heading}>Fibonacci Numbers</Text>
         <Text style={styles.body}>
-          {numbers.map(num => {
-            return <Text key={num}>{num}</Text>;
+          {numbers.map((num, index) => {
+            return <Text key={index}>{num}</Text>;
           })}
         </Text>
       </View>
