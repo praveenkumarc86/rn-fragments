@@ -10,11 +10,17 @@ import Hello from './Hello';
 // 1) to access lifecycle methods
 // 2) too have access to state
 class AppComponent extends Component {
+  // in latest versio of react app
+  // state can be defined without constructor function
+  state = {
+    fruitEmojis: ['�', '🍑', '🍇', '🥝']
+  };
+
   render() {
     return (
       <View>
-        <Hello name="React Native" />
-        <Hello name="World" />
+        <Hello name="🙏" />
+        <Hello name="⚛️ + 📱" />
       </View>
     );
   }
