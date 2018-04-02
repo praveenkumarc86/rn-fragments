@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
+import OpenWeatherMap from './utils/openWeatherMap';
 import Forecast from './components/Forecast';
 
 export default class App extends React.Component {
@@ -14,8 +15,12 @@ export default class App extends React.Component {
 
   // by using fat-arrow makes sure that the callback is bound to component instance (i.e. this)
   _handleTextChange = event => {
-    this.setState({
-      zip: event.nativeEvent.text
+    let zip = event.nativeEvent.text;
+    OpenWeatherMap.fetchForecast(zip).then(forecast => {
+      console.log('===>> Forecast ===>>', forecast);
+      this.setState({
+        forecast
+      });
     });
   };
 
@@ -47,7 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#f5fcff',
+    backgroundColor: '#666666',
     justifyContent: 'center'
   },
   welcome: {
