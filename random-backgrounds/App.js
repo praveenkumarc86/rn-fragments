@@ -1,13 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo';
 
 export default class App extends React.Component {
   state = {
-    defaultColor: '#bbb'
+    firstValue: '#fff',
+    lastValue: '#000'
   };
 
   _handleBackgroundCHange = () => {
-    let ColorCode =
+    // let ColorCode =
+    //   'rgb(' +
+    //   Math.floor(Math.random() * 256) +
+    //   ',' +
+    //   Math.floor(Math.random() * 256) +
+    //   ',' +
+    //   Math.floor(Math.random() * 256) +
+    //   ')';
+
+    // this.setState({
+    //   defaultColor: ColorCode
+    // });
+
+    let x =
+      'rgb(' +
+      Math.floor(Math.random() * 256) +
+      ',' +
+      Math.floor(Math.random() * 256) +
+      ',' +
+      Math.floor(Math.random() * 256) +
+      ')';
+    let y =
       'rgb(' +
       Math.floor(Math.random() * 256) +
       ',' +
@@ -17,13 +40,15 @@ export default class App extends React.Component {
       ')';
 
     this.setState({
-      defaultColor: ColorCode
+      firstValue: x,
+      lastValue: y
     });
   };
   render() {
     return (
-      <View
-        style={[styles.container, { backgroundColor: this.state.defaultColor }]}
+      <LinearGradient
+        colors={[this.state.firstValue, this.state.lastValue]}
+        style={[styles.container]}
       >
         <TouchableOpacity
           style={styles.button}
@@ -31,7 +56,7 @@ export default class App extends React.Component {
         >
           <Text style={styles.buttonText}>Click Here</Text>
         </TouchableOpacity>
-      </View>
+      </LinearGradient>
     );
   }
 }
