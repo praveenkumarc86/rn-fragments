@@ -5,12 +5,30 @@ export default class App extends React.Component {
   state = {
     defaultColor: '#bbb'
   };
+
+  _handleBackgroundCHange = () => {
+    let ColorCode =
+      'rgb(' +
+      Math.floor(Math.random() * 256) +
+      ',' +
+      Math.floor(Math.random() * 256) +
+      ',' +
+      Math.floor(Math.random() * 256) +
+      ')';
+
+    this.setState({
+      defaultColor: ColorCode
+    });
+  };
   render() {
     return (
       <View
         style={[styles.container, { backgroundColor: this.state.defaultColor }]}
       >
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this._handleBackgroundCHange}
+        >
           <Text style={styles.buttonText}>Click Here</Text>
         </TouchableOpacity>
       </View>
